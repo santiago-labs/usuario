@@ -22,7 +22,9 @@ public class UsuarioConverter {
                 .telefones(paraListaTelefones(usuarioDTO.getTelefones()))
                 .build();
     }
-    public List<Endereco> paraListaEndereco(List<EnderecoDTO> enderecoDTOS){
+    public List<Endereco> paraListaEndereco(List<EnderecoDTO> enderecoDTOS){if (enderecoDTOS == null || enderecoDTOS.isEmpty()) {
+        return List.of();
+    }
         return enderecoDTOS.stream().map(this::paraEndereco).toList();
     }
     public Endereco paraEndereco (EnderecoDTO enderecoDTO){
